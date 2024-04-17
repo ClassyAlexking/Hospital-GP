@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SignUp</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <nav>
+    <div class="logo">
+      <a href="index.html"><img src="images/logos/placeholder.jpg"></a>
+      <span>HospitalGP</span>
+    </div>
+    <div class="intro-items">
+      <a href="login.html">Login</a>
+      <a href="index.html">Home</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+<div class="signupbox">
+    <h2>Sign Up</h2>
+    <form>
+        <input type="text" id="enterEmail" placeholder="Email" required>
+        <input type="password" id="enterPassword" placeholder="Password" required>
+        <input type="text" id="enterName" placeholder="Username" required>
+    </form>
+    <button id="signup">SIGN UP</button>
+</div>
+
+
+</body>
+<script type="module">
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAd2ugMbf5y8Xyp_yOHusRUFwB0e_sCynQ",
+    authDomain: "hospital-gprojekt.firebaseapp.com",
+    databaseURL: "https://hospital-gprojekt-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "hospital-gprojekt",
+    storageBucket: "hospital-gprojekt.appspot.com",
+    messagingSenderId: "195852882182",
+    appId: "1:195852882182:web:803d496230956b3dab4e87"
+  };
+
+  const app = initializeApp(firebaseConfig);
+
+  import {getDatabase, ref, get, set, child, update, remove}
+  from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
+
+  
+
+  const db = getDatabase();
+
+  var enterID = document.querySelector("#enterID");
+  var enterName = document.querySelector("#enterName");
+  var enterEmail = document.querySelector("#enterEmail");
+  var enterPassword = document.querySelector("#enterPassword");
+  var enterName = document.querySelector("#enterName");
+  var enterAge = document.querySelector("#enterAge");
+  var findID = document.querySelector("#findID");
+  var findName = document.querySelector("#findName");
+  var findAge = document.querySelector("#findAge");
+
+  var signupBtn = document.querySelector("#signup");
+  var insertBtn = document.querySelector("#insert");
+  var updateBtn = document.querySelector("#update");
+  var removeBtn = document.querySelector("#remove");
+  var findBtn = document.querySelector("#find");
+
+  function SignUp() {
+    //check if there was already an existing email to avoid and print out error
+    const dbref = ref(db);
+
+    get(child(dbref, "Users/" + enterEmail.value))
+    .then((snapshot)=>{
+        if(snapshot.exists()){
+            alert("There already exist an account with this email");
+        } else {
+            set(ref(db, "Users/"+ enterEmail.value),{
+                Name: enterName.value,
+                Password: enterPassword.value,
+                Email: enterEmail.value
+            })
+            .then(()=>{
+                alert("Data added successfully");
+            })
+            .catch((error)=>{
+                alert(error);
+            });
+        }
+    })
+    .catch((error)=>{
+        alert(error)
+    })
+}
+
+
+  function InsertData() {
+      set(ref(db, "People/"+ enterID.value),{
+          Name: enterName.value,
+          ID: enterID.value,
+          Age: enterAge.value
+      })
+      .then(()=>{
+          alert("Data added successfully");
+      })
+      .catch((error)=>{
+          alert(error);
+      });
+  }
+
+  function FindData() {
+      const dbref = ref(db);
+
+      get(child(dbref, "People/" + findID.value))
+      .then((snapshot)=>{
+          if(snapshot.exists()){
+              findName.innerHTML = "Name: " + snapshot.val().Name;
+              findAge.innerHTML = "Age: " + snapshot.val().Age;
+          } else {
+              alert("No data found");
+          }
+      })
+      .catch((error)=>{
+          alert(error)
+      })
+      
+  }
+
+  function UpdateData(){
+      update(ref(db, "People/"+ enterID.value),{
+          Name: enterName.value,
+          Age: enterAge.value
+      })
+      .then(()=>{
+          alert("Data updated successfully");
+      })
+      .catch((error)=>{
+          alert(error);
+      });
+  }
+
+  function RemoveData(){
+      remove(ref(db, "People/"+ enterID.value))
+      .then(()=>{
+          alert("Data deleted successfully");
+      }) 
+      .catch((error)=>{
+          alert(error);
+      });
+  }
+
+  signupBtn.addEventListener('click', SignUp);
+  insertBtn.addEventListener('click', InsertData);
+  updateBtn.addEventListener('click', UpdateData);
+  removeBtn.addEventListener('click', RemoveData);
+  findBtn.addEventListener('click', FindData);
+
+</script>
+</html>

@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fefefe;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #007bff;
+    background-image: url('image/hospital_background.png'); /* Replace 'hospital_background.jpg' with the path to your image */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+h2 {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #fefefe;
+    font-size: 14px;
+    text-align: center;
+    padding: 5px;
+}
+nav {
+    background-color: #f0f0f0;
+    padding: 10px;
+    text-align: center;
+}   
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #f2f2f2;
+}
