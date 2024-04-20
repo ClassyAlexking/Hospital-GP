@@ -3,59 +3,105 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GP Hospital</title>
-
-  <!-- update the version number as needed -->
-  <script defer src="/__/firebase/10.11.0/firebase-app-compat.js"></script>
-  <!-- include only the Firebase features as you need -->
-  <script defer src="/__/firebase/10.11.0/firebase-auth-compat.js"></script>
-  <script defer src="/__/firebase/10.11.0/firebase-database-compat.js"></script>
-  <script defer src="/__/firebase/10.11.0/firebase-firestore-compat.js"></script>
-  <script defer src="/__/firebase/10.11.0/firebase-functions-compat.js"></script>
-  <script defer src="/__/firebase/10.11.0/firebase-messaging-compat.js"></script>
-  <script defer src="/__/firebase/10.11.0/firebase-storage-compat.js"></script>
-  <script defer src="/__/firebase/10.11.0/firebase-analytics-compat.js"></script>
-  <script defer src="/__/firebase/10.11.0/firebase-remote-config-compat.js"></script>
-  <script defer src="/__/firebase/10.11.0/firebase-performance-compat.js"></script>
-  <!-- 
-    initialize the SDK after all desired features are loaded, set useEmulator to false
-    to avoid connecting the SDK to running emulators.
-  -->
-  <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-
+  <title>Login and Regis</title>
 
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  <nav>
-    <div class="logo">
-      <a href="index.html"><img src="images/logos/placeholder.jpg"></a>
-      <span>HospitalGP
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="images/logos/placeholder.jpg"></a>
+            <span>HospitalGP
+        </div>
+        <nav class="navigation">
+            <a href="index.html">Home</a>
+            <a href="#">About</a>
+            <a href="#">Service</a>
+            <a href="#">Contact</a>
+            <button class="btnLogin-popup" onclick="window.location.href='login.html'">Login</button>
+        </nav>
+    </header>
+
+  <!-- log in -->
+    <div class="wrapper">
+        <div class="form-box login">
+            <h2>Login</h2>
+            <form>
+                <div class="input-box">
+                    <span class="icon"><ion-icon
+                    name="mail"></ion-icon></span>
+                    <input type="email" id="enterEmail" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon
+                    name="lock-closed"></ion-icon></span>
+                    <input type="password" id="enterPassword" required>
+                    <label>Password</label>
+                </div>
+                <div class="error-notify login">
+                    Please fill in.
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">
+                    Remember me</label>
+                    <a href="#">Forgot Password?</a>
+                </div>
+            </form>
+            <button class="btn" id="login">LOG IN</button>
+            <div class="login-register">
+                <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
+            </div>
+        </div>
+        <div class="form-box register">
+            <h2>Registration</h2>
+            <form>
+                <div class="input-box">
+                    <span class="icon"><ion-icon
+                    name="person"></ion-icon></span>
+                    <input type="text" id="enterName" required>
+                    <label>Full Name</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon
+                    name="mail"></ion-icon></span>
+                    <input type="email" id="enterEmail" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon
+                    name="lock-closed"></ion-icon></span>
+                    <input type="password" id="enterPassword" required>
+                    <label>Password</label>
+                </div>
+                <div class="select-box">
+                    <select id="selectRole" required>
+                        <option value="" disabled selected>Select Role</option>
+                        <option value="role1">Patient</option>
+                        <option value="role2">Doctor</option>
+                        <!-- try to make another role for admin -->
+                    </select>
+                </div>
+                <div class="error-notify register">
+                    Please fill in.
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">
+                    I agree to the terms & conditions</label>
+                </div>
+            </form>
+            <button class="btn" id="register">Register</button>
+            <div class="login-register">
+                <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+            </div>
+        </div>
     </div>
-    <div class="intro-items">
-      <a href="login.html">Login</a>
-      <a href="index.html">Home</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
-
-<div class="signupbox">
-    <h2>Sign In</h2>
-<form action="/login" method="post">
-    <input type="text" name="username" placeholder="Username" required><br>
-    <input type="password" name="password" placeholder="Password" required><br>
-    <button type="submit">Sign In</button>
-    <button type="submit"><a href="signup.html">Sign Up</a></button>
-</form>
-
-
-</div>
+    
 </body>
 
-<script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js"></script>
-<script src="js/index.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script type="module" src="js/script.js"></script>
 
 </html>
