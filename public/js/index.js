@@ -1,6 +1,5 @@
-import { initializeApp } from "firebase/app";
-import {getDatabase, ref, child, get, set, update, remove} from "firebase/database";
-// Your web app's Firebase configuration
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+
 const firebaseConfig = {
   apiKey: "AIzaSyAd2ugMbf5y8Xyp_yOHusRUFwB0e_sCynQ",
   authDomain: "hospital-gprojekt.firebaseapp.com",
@@ -11,36 +10,16 @@ const firebaseConfig = {
   appId: "1:195852882182:web:803d496230956b3dab4e87"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Initialize Realtime Database and get a reference to the service
-const db = getDatabase(app);
+import {getDatabase, ref, get, set, child, update, remove}
+from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
 
-function yoo(){
-  alert('yooo')
-}
+const db = getDatabase();
 
-function signup(){
-  var email = document.getElementById('email').value
-  var password = document.getElementById('password').value
-  var username = document.getElementById('username').value
+var userPic = document.querySelector('.user-pic');
+var subMenu = document.querySelector('.sub-menu-wrap');
 
-  set(ref(db, 'users/' + username), {
-    email: email,
-    password: password,
-    username: username
-  });
-
-  alert('Saved')
-}
-
-function writeEquipmentData(equipID,name,imageURL){
-    const db = getDatabase();
-    const reference = ref(db, "eqpmt", equipID);
-
-    set(reference,{
-        name : name,
-        equipmentIMG : imageURL,
-    });
-}
+userPic.addEventListener('click',()=> {
+  subMenu.classList.toggle('active');
+})

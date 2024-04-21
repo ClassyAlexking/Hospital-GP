@@ -5,26 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GP Hospital</title>
 
-  <!-- update the version number as needed -->
-  <script defer src="/__/firebase/10.11.0/firebase-app-compat.js"></script>
-  <!-- include only the Firebase features as you need -->
-  <script defer src="/__/firebase/10.11.0/firebase-auth-compat.js"></script>
-  <script defer src="/__/firebase/10.11.0/firebase-database-compat.js"></script>
-  <script defer src="/__/firebase/10.11.0/firebase-firestore-compat.js"></script>
-  <script defer src="/__/firebase/10.11.0/firebase-functions-compat.js"></script>
-  <script defer src="/__/firebase/10.11.0/firebase-messaging-compat.js"></script>
-  <script defer src="/__/firebase/10.11.0/firebase-storage-compat.js"></script>
-  <script defer src="/__/firebase/10.11.0/firebase-analytics-compat.js"></script>
-  <script defer src="/__/firebase/10.11.0/firebase-remote-config-compat.js"></script>
-  <script defer src="/__/firebase/10.11.0/firebase-performance-compat.js"></script>
-  <!-- 
-    initialize the SDK after all desired features are loaded, set useEmulator to false
-    to avoid connecting the SDK to running emulators.
-  -->
-  <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-
   <link rel="stylesheet" href="css/style.css">
-  <script src="script.js"></script>
 </head>
 
 <body>
@@ -39,7 +20,57 @@
         <a href="#">Service</a>
         <a href="#">Contact</a>
         <button class="btnLogin-popup" onclick="window.location.href='login.html'">Login</button>
-    </nav>
+        <img src="images/profiles/user.png" id="user-sub-menu" class="user-pic">
+        <div class="sub-menu-wrap">
+          <div class="sub-menu">
+            <div class="user-info">
+              <img src="images/profiles/user.png">
+              <h3 id="myUsername">Username</h3>
+              <script>
+                if(localStorage.getItem('username')) {
+                  var btnLogin = document.querySelector('.btnLogin-popup');
+                  var subMenu = document.querySelector('.sub-menu-wrap');
+                  var userPic = document.querySelector('.user-pic');
+                  
+                  btnLogin.classList.add('hide');
+                  userPic.classList.add('active');
+                  document.getElementById('myUsername').textContent = localStorage.getItem('username');
+
+                } 
+              </script>
+            </div>
+            <hr>
+            <a href="#" class="sub-menu-link">
+              <img src="images/profiles/profile.png">
+              <p>Edit Profile</p>
+              <span>></span>
+            </a>
+            <a href="#" class="sub-menu-link">
+              <img src="images/profiles/setting.png">
+              <p>Settings & Privacy</p>
+              <span>></span>
+            </a>
+            <a href="index.html" class="sub-menu-link">
+              <img src="images/profiles/help.png">
+              <p>Help & Support</p>
+              <span>></span>
+            </a>
+            <a href="index.html" id="logout" class="sub-menu-link">
+              <img src="images/profiles/logout.png">
+              <p>Logout</p>
+              <span>></span>
+              <script>
+                const logout = document.getElementById("logout");
+                logout.addEventListener('click', function(event) {
+                  event.preventDefault();
+                  localStorage.removeItem('username');
+                  window.location.href = logout.getAttribute('href');
+                });
+            </script>
+            </a>
+          </div>
+        </div>
+      </nav>
 </header>
 
 <section id="lunch">
@@ -123,4 +154,15 @@
 </section>
 
 </body>
+<script type="module" src="js/index.js"></script>
+<!-- <script>
+  // Initial variable values
+  var userPic = document.getElementById('user-sub-menu');
+
+  userPic.addEventListener('click',()=> {
+    alert("Hello");
+})
+</script> -->
+
+
 </html>
