@@ -17,7 +17,7 @@
     <nav class="navigation">
         <a href="index.html">Home</a>
         <a href="#">About</a>
-        <a href="#">Service</a>
+        <a href="service.html">Service</a>
         <a href="#">Contact</a>
         <button class="btnLogin-popup" onclick="window.location.href='login.html'">Login</button>
         <img src="images/profiles/user.png" id="user-sub-menu" class="user-pic">
@@ -26,18 +26,6 @@
             <div class="user-info">
               <img src="images/profiles/user.png">
               <h3 id="myUsername">Username</h3>
-              <script>
-                if(localStorage.getItem('username')) {
-                  var btnLogin = document.querySelector('.btnLogin-popup');
-                  var subMenu = document.querySelector('.sub-menu-wrap');
-                  var userPic = document.querySelector('.user-pic');
-                  
-                  btnLogin.classList.add('hide');
-                  userPic.classList.add('active');
-                  document.getElementById('myUsername').textContent = localStorage.getItem('username');
-
-                } 
-              </script>
             </div>
             <hr>
             <a href="#" class="sub-menu-link">
@@ -59,14 +47,6 @@
               <img src="images/profiles/logout.png">
               <p>Logout</p>
               <span>></span>
-              <script>
-                const logout = document.getElementById("logout");
-                logout.addEventListener('click', function(event) {
-                  event.preventDefault();
-                  localStorage.removeItem('username');
-                  window.location.href = logout.getAttribute('href');
-                });
-            </script>
             </a>
           </div>
         </div>

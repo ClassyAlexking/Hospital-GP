@@ -77,6 +77,12 @@
       <h2>Equipment</h2>
       <p>Lorem ipsum. king king shit</p>
     </div>
+    <script>
+      const EquipmentTab = document.getElementById("EquipmentTab");
+      EquipmentTab.addEventListener('click', function(event) {
+        window.location.href = "equipment.html";
+      });
+    </script>
     <div id="MedicineTab" class="service">
       <i class="fa-solid fa-pills"></i>
       <h2>Medicines</h2>
@@ -85,7 +91,6 @@
     <script>
       const MedicineTab = document.getElementById("MedicineTab");
       MedicineTab.addEventListener('click', function(event) {
-        localStorage.removeItem('username');
         window.location.href = "medicine.html";
       });
     </script>

@@ -19,6 +19,7 @@ from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
 
 const db = getDatabase();
 
+
 var loginEmail = document.getElementById("login-Email");
 var loginName = document.getElementById("login-Name");
 var loginPassword = document.getElementById("login-Password");
@@ -85,10 +86,6 @@ loginBtn.addEventListener('click',()=> {
 
 registerBtn.addEventListener('click',()=> {
     if (registerPassword.value == '' || registerEmail.value == '' || registerName.value == '') {
-        alert(registerName.value);
-        alert(registerPassword.value);
-        alert(registerEmail.value);
-        
         errorRegister.classList.add('active');
         return;
     }
@@ -112,6 +109,8 @@ registerBtn.addEventListener('click',()=> {
                 Email: registerEmail.value,
                 Password: registerPassword.value,
                 Username: registerName.value,
+                PhoneNumber: "",
+                Sex: "Male",
             })
             .then(()=>{
                 alert("Data added successfully");

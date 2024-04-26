@@ -24,6 +24,7 @@
     </header>
 
   <!-- log in -->
+<div class="loginPage">
     <div class="wrapper">
         <div class="form-box login">
             <h2>Login</h2>
@@ -52,6 +53,11 @@
             <button class="btn" id="login">LOG IN</button>
             <div class="login-register">
                 <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
+                <script>
+                    document.querySelector(".register-link").addEventListener('click', function(event) {
+                        event.preventDefault(); // Prevent the default action
+                    });
+                </script>
             </div>
         </div>
         <div class="form-box register">
@@ -82,6 +88,8 @@
                         <option value="" disabled selected>Select Role</option>
                         <option value="role1">User</option>
                         <option value="role2">Staff</option>
+                        <option value="role3">Doctor</option>
+                        <option value="role4">Nurse</option>
                         <!-- try to make another role for admin -->
                     </select>
                 </div>
@@ -96,9 +104,15 @@
             <button class="btn" id="register">Register</button>
             <div class="login-register">
                 <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+                <script>
+                    document.querySelector(".login-link").addEventListener('click', function(event) {
+                        event.preventDefault(); // Prevent the default action
+                    });
+                </script>
             </div>
         </div>
     </div>
+</div>
     
 </body>
 

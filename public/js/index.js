@@ -23,3 +23,26 @@ var subMenu = document.querySelector('.sub-menu-wrap');
 userPic.addEventListener('click',()=> {
   subMenu.classList.toggle('active');
 })
+
+function checkLogIn(){
+  if(localStorage.getItem('username')) {
+    var btnLogin = document.querySelector('.btnLogin-popup');
+    var subMenu = document.querySelector('.sub-menu-wrap');
+    var userPic = document.querySelector('.user-pic');
+    
+    btnLogin.classList.add('hide');
+    userPic.classList.add('active');
+    document.getElementById('myUsername').textContent = localStorage.getItem('username');
+  
+  } 
+}
+
+
+const logout = document.getElementById("logout");
+logout.addEventListener('click', function(event) {
+    event.preventDefault();
+    localStorage.removeItem('username');
+    window.location.href = logout.getAttribute('href');
+});
+
+checkLogIn();

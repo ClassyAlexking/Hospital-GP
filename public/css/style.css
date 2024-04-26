@@ -8,7 +8,7 @@
 }
 
 header {
-    position: fixed;
+    position: flex;
     top: 0;
     left: 0;
     width: 100%;
@@ -20,15 +20,18 @@ header {
     z-index: 99;
 }
 
+.hide {
+    display: none;
+}
 body {
-    display: flex;
-    justify-content: center;
+    display: fixed;
+    /* justify-content: center;
     align-items: center;
     min-height: 100vh;
-    /* background: url("../images/gallery/background.png") no-repeat; */
+    background: url("../images/gallery/background.png") no-repeat;
     background-color: #ccc;
     background-size: cover;
-    background-position: center;
+    background-position: center; */
 }
 
 .logo{
@@ -125,8 +128,8 @@ body {
 
 .sub-menu-wrap {
     position: absolute;
-    top: 100%;
-    right: 3%;
+    transform: translateY(30px);
+    right: 0;
     width: 310px;
     max-height: 0px;
     overflow: hidden;
@@ -206,7 +209,7 @@ body {
     border-radius: 5px;
     text-align: center;
 }
-  .signupbox input {
+.signupbox input {
     width: 100%;
     margin-bottom: 10px;
     padding: 8px;
@@ -214,7 +217,7 @@ body {
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
-  .signupbox button {
+.signupbox button {
     width: 100%;
     padding: 10px;
     border-radius: 3px;
@@ -223,7 +226,16 @@ body {
     color: #fff;
     cursor: pointer;
 }
-
+.loginPage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    /* background: url("../images/gallery/background.png") no-repeat; */
+    background-color: #ccc;
+    background-size: cover;
+    background-position: center;
+}
 .wrapper {
     position: relative;
     width: 400px;
@@ -237,6 +249,23 @@ body {
     justify-content: center;
     align-items: center;
     transition: .2s ease;
+    overflow: hidden;
+}
+.wrapper .icon-close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    background: #162938;
+    font-size: 2em;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    cursor: pointer;
+    z-index: 1;
 }
 
 .wrapper .form-box {
@@ -245,7 +274,6 @@ body {
 }
 
 .wrapper.active {
-    margin-top: 40px;
     height: 560px;
 }
 .wrapper.active .form-box.login {
@@ -306,6 +334,16 @@ body {
     color: #162938;
     line-height: 57px;
 }
+.input-box input[type="date"]{
+    color: transparent;
+    font-size: 14px;
+    margin-left: 4px;
+}
+.input-box input[type="date"]:focus,
+.input-box input[type="date"]:valid{
+    color: #162938;
+}
+
 
 .select-box {
     position: relative;
@@ -404,4 +442,127 @@ body {
 
 .login-register p a:hover {
     text-decoration: underline;
+}
+
+/* SERVICE */
+.container {
+    width: 100%;
+    height: 100vh;
+    padding: 0 8%;
+}
+.container h1 {
+    text-align: center;
+    padding-top: 10%;
+    margin-bottom: 60px;
+    font-weight: 600;
+    position: relative;
+}
+.container h1::after{
+    content: '';
+    background: #303ef7;
+    width: 100px;
+    height: 5px;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 30px;
+}
+.service {
+    text-align: center;
+    padding: 25px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    background: transparent;
+    transition: 0.5s;
+}
+
+.service i {
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: #303ef7;
+}
+.service h2{
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.service:hover{
+    background: #303ef7;
+    color: #fff;
+    transform: scale(1.05);
+}
+.service:hover i{
+    color: #fff;
+}
+/* MEDICINE */
+.Medrow { /* Center align the blocks */
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.medicinesItem {
+    flex: 0 0 auto;
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    padding: 25px 10px;
+    border-radius: 5px;
+    border: 2px solid;
+    text-align: center;
+    align-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    background: transparent;
+    transition: 0.5s;
+}
+.medicinesItem:hover {
+    background: #303ef7;
+}
+
+.medicinesItem i {
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: #303ef7;
+}
+.medicinesItem:hover i {
+    color: #fff;
+}
+
+.medicinesItem h2 {
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.medicinesItem:hover h2 {
+    color: #fff;
+}
+.Medicines-popup{
+    width: 400px;
+    background: #fff;
+    border-radius: 6px;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    text-align: center;
+    color: #333;
+    transition: 0.3s ease;
+    transform: scale(0);
+}
+.Medicines-popup .wrapper{
+    height: fit-content;
+    transform: scale(0);
+}
+.Medicines-popup .input-box input {
+    padding: 0;
+}
+
+.Medicines-popup.active {
+    transform: translate(-50%,-50%);
+}
+.Medicines-popup.active .wrapper{
+    transform: scale(1);
 }
